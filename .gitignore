@@ -1,0 +1,21 @@
+# Ignore virtual environment
+env_site/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+db.sqlite3
+
+# Django local settings (sensitive info)
+settings_local.py
+
+# VS Code settings
+.vscode/
+
+# Mac / Linux system files
+.DS_Store
+*.swp
