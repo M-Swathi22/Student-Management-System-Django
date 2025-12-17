@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Student</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" value="{{ student.name }}" required>
+        <input type="text" name="register_number" value="{{ student.register_number }}" required>
+        <input type="date" name="dob" value="{{ student.dob }}" required>
+        <input type="number" name="age" value="{{ student.age }}" required>
+        <input type="email" name="email" value="{{ student.email }}" required>
+        <input type="text" name="phone" value="{{ student.phone }}" required>
+        <textarea name="address" rows="3" required>{{ student.address }}</textarea>
+
+        <select name="course" required>
+            {% for course in courses %}
+                <option value="{{ course.id }}" {% if student.course.id == course.id %}selected{% endif %}>{{ course.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Update Student</button>
+    </form>
+</div>
+{% endblock %}

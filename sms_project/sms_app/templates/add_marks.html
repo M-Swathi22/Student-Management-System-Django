@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Marks{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:600px; margin:auto; background:white; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center; margin-bottom:25px;">Add Marks</h2>
+
+    <form method="post" style="display:flex; flex-direction:column; gap:15px;">
+        {% csrf_token %}
+
+        <label style="font-weight:bold;">Select Student</label>
+        <select name="student" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+            {% for student in students %}
+            <option value="{{ student.id }}">{{ student.name }} - {{ student.register_number }}</option>
+            {% endfor %}
+        </select>
+
+        <label style="font-weight:bold;">Select Subject</label>
+        <select name="subject" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+            {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.name }} ({{ subject.course.name }})</option>
+            {% endfor %}
+        </select>
+
+        <label style="font-weight:bold;">Marks Obtained</label>
+        <input type="number" name="marks_obtained" min="0" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+
+        <label style="font-weight:bold;">Total Marks</label>
+        <input type="number" name="total_marks" min="1" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+
+        <button type="submit" style="padding:12px; background:#4facfe; color:white; font-weight:bold; border:none; border-radius:5px; cursor:pointer; transition:0.3s;">Submit</button>
+    </form>
+</div>
+{% endblock %}

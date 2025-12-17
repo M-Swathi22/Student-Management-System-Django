@@ -47,3 +47,11 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f"{self.student.name} - {self.subject.name} - {self.status}"
+    
+class Staff(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name

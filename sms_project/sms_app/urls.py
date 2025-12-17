@@ -9,4 +9,16 @@ urlpatterns = [
     path('marks/', views.student_marks, name='student_marks'),
     path('attendance/', views.student_attendance, name='student_attendance'),
     path('staff/login/', views.staff_login, name='staff_login'),
+    path('add-student/', views.add_student, name='add_student'),
+    path('staff-login/', views.staff_login, name='staff_login'),
+    path('staff-dashboard/', views.staff_dashboard, name='staff_dashboard'),
+    path('staff-logout/', views.staff_logout, name='staff_logout'),
+    path('students/', views.view_student, name='view_student'),
+    path('edit-student/<int:id>/', views.edit_student, name='edit_student'),
+    path('delete-student/<int:id>/', views.delete_student, name='delete_student'),
+    path('add-marks/', views.add_marks, name='add_marks'),
+    path('add-attendance/', views.add_attendance, name='add_attendance'),
+
+
+
 ]

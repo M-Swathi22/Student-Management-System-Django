@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+<div style="max-width:800px; margin:auto; padding:20px;">
+    <h2>Welcome {{ staff.name }}</h2>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+    <a href="{% url 'add_student' %}" style="flex:1; padding:15px; text-align:center; background:#4facfe; color:white; border-radius:5px; text-decoration:none;">Add Student</a>
+    <a href="{% url 'view_student' %}" style="flex:1; padding:15px; text-align:center; background:#00c6fb; color:white; border-radius:5px; text-decoration:none;">View Students</a>
+    <a href="{% url 'add_marks' %}" style="flex:1; padding:15px; text-align:center; background:#4caf50; color:white; border-radius:5px; text-decoration:none;">Add Marks</a>
+    <a href="{% url 'add_attendance' %}" style="flex:1; padding:15px; text-align:center; background:#ff9800; color:white; border-radius:5px; text-decoration:none;">Add Attendance</a>
+    <a href="{% url 'staff_logout' %}" style="flex:1; padding:15px; text-align:center; background:#dc3545; color:white; border-radius:5px; text-decoration:none;">Logout</a>
+</div>
+
+</div>
+{% endblock %}

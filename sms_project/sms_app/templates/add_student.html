@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Student{% endblock %}
+
+{% block content %}
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background: #4facfe;
+        color: white;
+        padding: 10px;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+</style>
+
+<div class="container">
+    <h2>Add Student</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Student Name" required>
+
+        <input type="text" name="register_number" placeholder="Register Number" required>
+
+        <input type="date" name="dob" required>
+
+        <input type="number" name="age" placeholder="Age" required>
+
+        <input type="email" name="email" placeholder="Email" required>
+
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <textarea name="address" placeholder="Address" rows="3" required></textarea>
+
+        <select name="course" required>
+            <option value="">Select Course</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Add Student</button>
+    </form>
+</div>
+
+{% endblock %}
