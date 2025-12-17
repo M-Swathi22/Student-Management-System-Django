@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Student
 
+def home(request):
+    return render(request, 'home.html')
+
+
 def student_login(request):
     if request.method == "POST":
         reg_no = request.POST['register_number']
@@ -47,3 +51,6 @@ def student_attendance(request):
     attendance = Attendance.objects.filter(student=student)  # ✅ Correct
 
     return render(request, 'student_attendance.html', {'attendance': attendance})
+
+def staff_login(request):
+    return render(request, 'staff_login.html')

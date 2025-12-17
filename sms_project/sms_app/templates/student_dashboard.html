@@ -1,57 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            padding: 20px;
-        }
+{% extends 'base.html' %}
 
-        .box {
-            background: white;
-            padding: 20px;
-            max-width: 500px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+{% block title %}Student Dashboard{% endblock %}
 
-        h2 {
-            text-align: center;
-        }
+{% block content %}
 
-        p {
-            font-size: 15px;
-        }
+<style>
+    .box {
+        background: white;
+        padding: 20px;
+        max-width: 500px;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
+    h2 {
+        text-align: center;
+    }
 
-        .btn {
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-            flex: 1;
-            margin: 0 5px;
-        }
+    p {
+        font-size: 15px;
+    }
 
-        .marks-btn { background: #4facfe; }
-        .attendance-btn { background: #00c6fb; }
-        .logout { background: #dc3545; margin-top: 15px; display: block; }
-    </style>
-</head>
-<body>
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        flex: 1;
+        margin: 0 5px;
+    }
+
+    .marks-btn {
+        background: #4facfe;
+    }
+
+    .attendance-btn {
+        background: #00c6fb;
+    }
+
+    .logout {
+        background: #dc3545;
+        margin-top: 15px;
+        display: block;
+    }
+</style>
 
 <div class="box">
     <h2>Welcome {{ student.name }}</h2>
+
     <p><b>Register Number:</b> {{ student.register_number }}</p>
     <p><b>Email:</b> {{ student.email }}</p>
     <p><b>Course:</b> {{ student.course.name }}</p>
@@ -65,5 +70,4 @@
     <a href="{% url 'student_logout' %}" class="btn logout">Logout</a>
 </div>
 
-</body>
-</html>
+{% endblock %}

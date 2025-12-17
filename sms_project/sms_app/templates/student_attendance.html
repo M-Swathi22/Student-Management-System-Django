@@ -1,85 +1,84 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Attendance</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            padding: 20px;
-        }
+{% extends 'base.html' %}
 
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+{% block title %}Student Attendance{% endblock %}
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+{% block content %}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+<style>
+    .container {
+        max-width: 700px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        th {
-            background: #00c6fb;
-            color: white;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        tr:hover {
-            background: #f1f1f1;
-        }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        .back-btn {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            text-decoration: none;
-            background: #4facfe;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
+    th {
+        background: #00c6fb;
+        color: white;
+    }
+
+    tr:hover {
+        background: #f1f1f1;
+    }
+
+    .back-btn {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        text-decoration: none;
+        background: #4facfe;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
 
 <div class="container">
     <h2>Your Attendance</h2>
+
     {% if attendance %}
-    <table>
-        <tr>
-            <th>Subject</th>
-            <th>Date</th>
-            <th>Status</th>
-        </tr>
-        {% for att in attendance %}
-        <tr>
-            <td>{{ att.subject.name }}</td>
-            <td>{{ att.date }}</td>
-            <td>{{ att.status }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+
+            {% for att in attendance %}
+            <tr>
+                <td>{{ att.subject.name }}</td>
+                <td>{{ att.date }}</td>
+                <td>{{ att.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     {% else %}
-    <p style="text-align:center; color: #555;">No attendance records available yet.</p>
+        <p style="text-align:center; color: #555;">
+            No attendance records available yet.
+        </p>
     {% endif %}
 
-    <a href="{% url 'student_dashboard' %}" class="back-btn">Back to Dashboard</a>
+    <a href="{% url 'student_dashboard' %}" class="back-btn">
+        Back to Dashboard
+    </a>
 </div>
 
-</body>
-</html>
+{% endblock %}
