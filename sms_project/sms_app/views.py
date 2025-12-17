@@ -182,3 +182,16 @@ def add_attendance(request):
         'subjects': subjects,
         'today': today
     })
+
+
+def courses(request):
+    courses = Course.objects.all()
+    return render(request, 'courses.html', {'courses': courses})
+
+
+def add_courses(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        Course.objects.create(name=name)
+        return redirect('courses')
+    return render(request, 'add_courses.html')
