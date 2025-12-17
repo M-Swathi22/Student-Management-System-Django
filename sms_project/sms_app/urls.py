@@ -20,6 +20,10 @@ urlpatterns = [
     path('add-attendance/', views.add_attendance, name='add_attendance'),
     path('staff/courses/', views.courses, name='courses'),
     path('staff/add-courses/', views.add_courses, name='add_courses'),
+    path('staff/course/<int:course_id>/subjects/', views.course_subjects, name='course_subjects'),
+    path('staff/course/<int:course_id>/add-subject/', views.add_subject, name='add_subject'),
+
+
  
 
 

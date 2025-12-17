@@ -1,32 +1,101 @@
 {% extends 'base.html' %}
-{% block title %}Courses{% endblock %}
-
 {% block content %}
-<div style="max-width:700px; margin:auto; background:white; padding:20px;
-            border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
 
-    <h2 style="text-align:center;">Courses</h2>
+<style>
+    .course-container {
+        max-width: 900px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
 
-    <a href="{% url 'add_courses' %}"
-       style="display:inline-block; margin-bottom:15px;
-              background:#4facfe; color:white; padding:10px 15px;
-              text-decoration:none; border-radius:5px;">
-        + Add Course
-    </a>
+    .course-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-    {% if courses %}
-    <table style="width:100%; border-collapse:collapse;">
-        <tr style="background:#4facfe; color:white;">
-            <th style="padding:10px;">Course Name</th>
+    .course-header h2 {
+        margin: 0;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th {
+        background: #4facfe;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background: #f4f9ff;
+    }
+
+    .action-btn {
+        padding: 6px 14px;
+        background: #00c6fb;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .action-btn:hover {
+        background: #009edc;
+    }
+
+    .empty-msg {
+        text-align: center;
+        color: #777;
+        padding: 20px;
+    }
+</style>
+
+<div class="course-container">
+
+    <div class="course-header">
+        <h2>📚 Courses</h2>
+    </div>
+
+    <table>
+        <tr>
+            <th>Course Name</th>
+            <th style="width: 180px;">Actions</th>
         </tr>
+
         {% for course in courses %}
-        <tr style="border-bottom:1px solid #ddd;">
-            <td style="padding:10px;">{{ course.name }}</td>
+        <tr>
+            <td>{{ course.name }}</td>
+            <td>
+                <a href="{% url 'course_subjects' course.id %}" class="action-btn">
+                    View Subjects
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2" class="empty-msg">
+                No courses available.
+            </td>
         </tr>
         {% endfor %}
     </table>
-    {% else %}
-    <p style="text-align:center;">No courses added yet.</p>
-    {% endif %}
+
 </div>
+
 {% endblock %}

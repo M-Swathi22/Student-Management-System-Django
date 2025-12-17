@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .subject-container {
+        max-width: 900px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .subject-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .subject-header h2 {
+        margin: 0;
+        color: #333;
+    }
+
+    .add-btn {
+        padding: 8px 16px;
+        background: #4facfe;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .add-btn:hover {
+        background: #2f8df6;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th {
+        background: #00c6fb;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background: #f4f9ff;
+    }
+
+    .empty-msg {
+        text-align: center;
+        color: #777;
+        padding: 20px;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #4facfe;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="subject-container">
+
+    <div class="subject-header">
+        <h2>📘 Subjects – {{ course.name }}</h2>
+        <a href="{% url 'add_subject' course.id %}" class="add-btn">
+            + Add Subject
+        </a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Subject Name</th>
+        </tr>
+
+        {% for subject in subjects %}
+        <tr>
+            <td>{{ subject.name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td class="empty-msg">
+                No subjects added yet.
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'courses' %}" class="back-link">← Back to Courses</a>
+
+</div>
+
+{% endblock %}

@@ -195,3 +195,22 @@ def add_courses(request):
         Course.objects.create(name=name)
         return redirect('courses')
     return render(request, 'add_courses.html')
+
+def course_subjects(request, course_id):
+    course = Course.objects.get(id=course_id)
+    subjects = Subject.objects.filter(course=course)
+    return render(request, 'course_subjects.html', {
+        'course': course,
+        'subjects': subjects
+    })
+
+
+def add_subject(request, course_id):
+    course = Course.objects.get(id=course_id)
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        Subject.objects.create(course=course, name=name)
+        return redirect('course_subjects', course_id=course.id)
+
+    return render(request, 'add_subject.html', {'course': course})
