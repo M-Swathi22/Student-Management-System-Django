@@ -29,3 +29,21 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.name
+
+class Marks(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    marks_obtained = models.IntegerField()
+    total_marks = models.IntegerField(default=100)
+
+    def __str__(self):
+        return f"{self.student.name} - {self.subject.name}"
+
+class Attendance(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=(('Present','Present'),('Absent','Absent')))
+
+    def __str__(self):
+        return f"{self.student.name} - {self.subject.name} - {self.status}"

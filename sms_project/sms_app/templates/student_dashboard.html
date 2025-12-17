@@ -26,16 +26,26 @@
             font-size: 15px;
         }
 
-        .logout {
-            display: block;
-            text-align: center;
+        .buttons {
+            display: flex;
+            justify-content: space-between;
             margin-top: 20px;
-            text-decoration: none;
-            background: #dc3545;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
         }
+
+        .btn {
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .marks-btn { background: #4facfe; }
+        .attendance-btn { background: #00c6fb; }
+        .logout { background: #dc3545; margin-top: 15px; display: block; }
     </style>
 </head>
 <body>
@@ -47,7 +57,12 @@
     <p><b>Course:</b> {{ student.course.name }}</p>
     <p><b>Phone:</b> {{ student.phone }}</p>
 
-    <a href="{% url 'student_logout' %}" class="logout">Logout</a>
+    <div class="buttons">
+        <a href="{% url 'student_marks' %}" class="btn marks-btn">View Marks</a>
+        <a href="{% url 'student_attendance' %}" class="btn attendance-btn">View Attendance</a>
+    </div>
+
+    <a href="{% url 'student_logout' %}" class="btn logout">Logout</a>
 </div>
 
 </body>

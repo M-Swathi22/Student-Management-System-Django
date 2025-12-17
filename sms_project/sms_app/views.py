@@ -26,3 +26,24 @@ def student_dashboard(request):
 def student_logout(request):
     request.session.flush()
     return redirect('student_login')
+
+from django.shortcuts import render, redirect
+from .models import Student, Marks, Attendance
+
+def student_marks(request):
+    if not request.session.get('student_id'):
+        return redirect('student_login')
+
+    student = Student.objects.get(id=request.session['student_id'])
+    marks = Marks.objects.filter(student=student)  # ✅ Correct
+
+    return render(request, 'student_marks.html', {'marks': marks})
+
+def student_attendance(request):
+    if not request.session.get('student_id'):
+        return redirect('student_login')
+
+    student = Student.objects.get(id=request.session['student_id'])
+    attendance = Attendance.objects.filter(student=student)  # ✅ Correct
+
+    return render(request, 'student_attendance.html', {'attendance': attendance})
