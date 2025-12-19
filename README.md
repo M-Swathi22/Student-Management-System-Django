@@ -84,11 +84,17 @@ SMS_Project/
 
 ---
 
-## 📸 Screens Included
+## 📸 Screenshots
 
-- Home Page  
-- Student Login  
-- Staff Login  
+### 🏠 Home Page
+![Home Page](screenshots/home_page.png)
+
+### 🎓 Student Login
+![Student Login](screenshots/student_login.png)
+
+### 👨‍🏫 Staff Login
+![Staff Login](screenshots/staff_login.png)
+
 
 ---
 
